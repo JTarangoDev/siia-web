@@ -434,16 +434,51 @@ section {
   margin-inline: 12px;
   border-radius: 10px;
   padding: 20px 15px;
+  height: 500px;
   -webkit-box-shadow: 0px 9px 15px -4px rgba(0,0,0,0.21);
   -moz-box-shadow: 0px 9px 15px -4px rgba(0,0,0,0.21);
   box-shadow: 0px 9px 15px -4px rgba(0,0,0,0.21);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.services .content .icon-box h3 {
+.services .content .icon-box::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  mask: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  transition: all .7s;
+}
+
+.info{
+  z-index: 1;
+}
+
+.services .content .icon-box .info h3 {
   font-size: 20px;
   font-weight: 700;
-  margin: 5px 0 10px 60px;
+  margin: 10px;
   transition: color .3s;
+  text-align: center;
+  color: #343a40;
+  animation: card-title-translate-inverse .5s;
+}
+
+@keyframes card-title-translate-inverse {
+  from{
+    transform: translateY(-45px);
+  }
+  to{
+    transform: translateY(0px);
+  }
 }
 
 .services .content .icon-box i {
@@ -452,13 +487,35 @@ section {
   color: #5777ba;
 }
 
-.services .content .icon-box p {
+.services .content .icon-box .info p {
   font-size: 15px;
-  color: #979aa1;
-  margin-left: 60px;
+  padding: 0 15px;
+  color: #fff;
+  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.99);
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transform: translateY(30px);
+  transition: all .5s;
 }
-.services .content .icon-box:hover > h3{
-  color: #5777ba;
+
+.services .content .icon-box:hover > .info h3{
+  animation: card-title-translate .5s;
+}
+
+@keyframes card-title-translate {
+  from{
+    transform: translateY(45px);
+  }
+  to{
+    transform: translateY(0px);
+  }
+}
+
+.services .content .icon-box:hover > .info p{
+  opacity: 1;
+  height: auto;
+  transform: translateY(0px);
 }
 
 .services .image img{
@@ -483,6 +540,10 @@ section {
 }
 
 @media (max-width: 667px) {
+  .services .content{
+    margin-inline: 15px;
+  }
+
   .services .image img {
     max-width: 100%;
   }
@@ -510,7 +571,7 @@ section {
 }
 
 .nom .accordion-list {
-  padding: 0 100px 30px 0px;
+  padding: 0 0px 0px 100px;
 }
 
 .nom .accordion-list ul {
@@ -606,7 +667,7 @@ section {
     padding-top: 30px;
   }
 
-  .nom.accordion-list {
+  .nom .accordion-list {
     padding-bottom: 30px;
   }
 }
