@@ -805,7 +805,18 @@ section {
   align-items: center;
   border-right: 1px solid #d8d8d8;
   overflow: hidden;
-  height: 180px;
+  height: auto;
+}
+
+#accreditation .repse img{
+  width: 200px;
+}
+
+@media (max-width: 1199px) {
+  #accreditation .repse img{
+    width: 145px;
+    margin: 5px;
+  }
 }
 
 #accreditation img {
@@ -817,7 +828,7 @@ section {
 
 
 #accreditation .acc-logo:hover img {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 
